@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FavouritesVC.swift
 //  UnsplashMVVM
 //
 //  Created by Павел Виноградов on 22.09.2022.
@@ -7,13 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FavouritesViewController: BaseViewController<FavouritesView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        mainView.backgroundColor = .darkGray
     }
-
-
+  
 }
-
