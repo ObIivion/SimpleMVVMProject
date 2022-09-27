@@ -13,7 +13,7 @@ class PhotosViewController: BaseViewController<PhotosView> {
     private lazy var viewModel = PhotosViewModel()
     
     private let apiProvider = MoyaApiProvider()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,12 +29,9 @@ class PhotosViewController: BaseViewController<PhotosView> {
         print("bindViewModel")
         viewModel.fetchPhotos()
         viewModel.reloadCollectionData = { [weak self] in
-            DispatchQueue.main.async {
-                self?.mainView.picturesCollection.reloadData()
-            }
+            self?.mainView.picturesCollection.reloadData()
         }
     }
-    
 }
 
 extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -49,14 +46,14 @@ extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier,
-                                                                   for: indexPath) as! PhotosCollectionViewCell
+                                                      for: indexPath) as! PhotosCollectionViewCell
         cell.setImage(url: viewModel.photos[indexPath.row].urls.regular)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier,
-                                                                   for: indexPath) as! PhotosCollectionViewCell
+                                                      for: indexPath) as! PhotosCollectionViewCell
         cell.setImage(url: viewModel.photos[indexPath.row].urls.full)
     }
 }
