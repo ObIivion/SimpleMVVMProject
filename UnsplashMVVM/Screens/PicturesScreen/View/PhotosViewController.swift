@@ -50,12 +50,6 @@ extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.setImage(url: viewModel.photos[indexPath.row].urls.regular)
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier,
-                                                      for: indexPath) as! PhotosCollectionViewCell
-        cell.setImage(url: viewModel.photos[indexPath.row].urls.full)
-    }
 }
 
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
