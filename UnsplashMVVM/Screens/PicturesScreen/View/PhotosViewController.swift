@@ -10,15 +10,9 @@ import Kingfisher
 
 class PhotosViewController: BaseViewController<PhotosView> {
     
-    var viewModel = PhotosViewModel()
+    private lazy var viewModel = PhotosViewModel()
     
     private let apiProvider = MoyaApiProvider()
-    
-    var photos = [PhotoStruct]() {
-        didSet {
-            mainView.picturesCollection.reloadData()
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +22,16 @@ class PhotosViewController: BaseViewController<PhotosView> {
                                              forCellWithReuseIdentifier: PhotosCollectionViewCell.identifier)
         mainView.picturesCollection.dataSource = self
         
-        print("start get photos")
-        apiProvider.moyaGetPhotos { response in
-            switch response {
-            case let .success(photos):
-                self.photos = photos
-            case let .failure(error):
-                print(error)
-            }
-        }
+        bindViewModel()
     }
     
-    func bindViewModel() {
-        viewModel.photoInfo.bind { photos in
-            <#code#>
+    private func bindViewModel() {
+        print("bindViewModel")
+        viewModel.fetchPhotos()
+        viewModel.reloadCollectionData = { [weak self] in
+            DispatchQueue.main.async {
+                self?.mainView.picturesCollection.reloadData()
+            }
         }
     }
     
@@ -54,20 +44,20 @@ extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return viewModel.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier,
                                                                    for: indexPath) as! PhotosCollectionViewCell
-        cell.setImage(url: photos[indexPath.row].urls.regular)
+        cell.setImage(url: viewModel.photos[indexPath.row].urls.regular)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier,
                                                                    for: indexPath) as! PhotosCollectionViewCell
-        cell.setImage(url: photos[indexPath.row].urls.full)
+        cell.setImage(url: viewModel.photos[indexPath.row].urls.full)
     }
 }
 
