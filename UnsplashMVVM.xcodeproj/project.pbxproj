@@ -20,6 +20,7 @@
 		A30F0ACC28DCF1E500A3E456 /* FavouritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F0ACB28DCF1E500A3E456 /* FavouritesVC.swift */; };
 		A30F0ACE28DCF20900A3E456 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F0ACD28DCF20900A3E456 /* FavouritesView.swift */; };
 		A37F261828E1BCA2008107A7 /* PhotoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37F261728E1BCA2008107A7 /* PhotoStruct.swift */; };
+		A3D41FCE28E477F80076FF59 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D41FCD28E477F80076FF59 /* DetailsViewModel.swift */; };
 		A3D4655228DDB8BF00805396 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D4655128DDB8BF00805396 /* UIColorExtension.swift */; };
 		A3D4655428DDBCEF00805396 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D4655328DDBCEF00805396 /* Observable.swift */; };
 		A3D4655728DDBEDF00805396 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D4655628DDBEDF00805396 /* ApiProvider.swift */; };
@@ -46,6 +47,7 @@
 		A30F0ACB28DCF1E500A3E456 /* FavouritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesVC.swift; sourceTree = "<group>"; };
 		A30F0ACD28DCF20900A3E456 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		A37F261728E1BCA2008107A7 /* PhotoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStruct.swift; sourceTree = "<group>"; };
+		A3D41FCD28E477F80076FF59 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		A3D4655128DDB8BF00805396 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A3D4655328DDBCEF00805396 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		A3D4655628DDBEDF00805396 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
@@ -114,7 +116,7 @@
 		A30F0AA628DCD71A00A3E456 /* UnsplashMVVM */ = {
 			isa = PBXGroup;
 			children = (
-				A30F0AC128DCE47E00A3E456 /* Coordinator */,
+				A30F0AC128DCE47E00A3E456 /* Coordinators */,
 				A30F0AC528DCE51200A3E456 /* Bindings */,
 				A30F0AC428DCE50200A3E456 /* Screens */,
 				A30F0AB028DCD71A00A3E456 /* Assets.xcassets */,
@@ -142,12 +144,13 @@
 			path = BaseClasses;
 			sourceTree = "<group>";
 		};
-		A30F0AC128DCE47E00A3E456 /* Coordinator */ = {
+		A30F0AC128DCE47E00A3E456 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				A3D41FC428E452480076FF59 /*  Protocols */,
 				A30F0AC228DCE4C900A3E456 /* MainCoordinator.swift */,
 			);
-			path = Coordinator;
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		A30F0AC428DCE50200A3E456 /* Screens */ = {
@@ -196,6 +199,30 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A3D41FC428E452480076FF59 /*  Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = " Protocols";
+			sourceTree = "<group>";
+		};
+		A3D41FCB28E477DC0076FF59 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A3D41FCD28E477F80076FF59 /* DetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A3D41FCC28E477E50076FF59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A3D4655B28DDE06A00805396 /* DetailsView.swift */,
+				A3D4655D28DDE07B00805396 /* DetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A3D4655028DDB89700805396 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,8 +243,8 @@
 		A3D4655A28DDE03C00805396 /* DetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				A3D4655B28DDE06A00805396 /* DetailsView.swift */,
-				A3D4655D28DDE07B00805396 /* DetailsViewController.swift */,
+				A3D41FCC28E477E50076FF59 /* View */,
+				A3D41FCB28E477DC0076FF59 /* ViewModel */,
 			);
 			path = DetailsScreen;
 			sourceTree = "<group>";
@@ -361,6 +388,7 @@
 				A30F0AC028DCDF0D00A3E456 /* BaseViewController.swift in Sources */,
 				A37F261828E1BCA2008107A7 /* PhotoStruct.swift in Sources */,
 				A30F0AAC28DCD71A00A3E456 /* PhotosViewController.swift in Sources */,
+				A3D41FCE28E477F80076FF59 /* DetailsViewModel.swift in Sources */,
 				A30F0ACA28DCEC5D00A3E456 /* MainTabBarController.swift in Sources */,
 				A30F0AC328DCE4C900A3E456 /* MainCoordinator.swift in Sources */,
 				A30F0AA828DCD71A00A3E456 /* AppDelegate.swift in Sources */,

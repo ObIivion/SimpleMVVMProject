@@ -24,7 +24,6 @@ class MainTabBarController: UITabBarController {
                            setupVC(viewController: FavouritesViewController(),
                                    title: "Favourites",
                                    image: UIImage(systemName: "bookmark.circle.fill"))]
-        
     }
     
     private func setupVC(viewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
@@ -56,5 +55,12 @@ class MainTabBarController: UITabBarController {
         tabBar.unselectedItemTintColor = UIColor.unselectedTabItemColor
         tabBar.tintColor = UIColor.selectedTabItemColor
         roundLayer.fillColor = UIColor.mainTabBarColor.cgColor
+    }
+}
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        <#code#>
     }
 }
