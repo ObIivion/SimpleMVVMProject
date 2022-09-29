@@ -8,6 +8,8 @@
 import UIKit
 
 class FavouritesViewController: BaseViewController<FavouritesView> {
+    
+    weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,30 +9,35 @@ import UIKit
 
 protocol MainCoordinatorProtocol {
     
-    var tabBarController: MainTabBarController { get set }
     var navController: UINavigationController { get set }
+    var tabBarController: MainTabBarController { get set }
     func photoTaped(photoInfo: PhotoStruct)
 }
 
 class MainCoordinator: MainCoordinatorProtocol {
     
-    var tabBarController: MainTabBarController
     var navController: UINavigationController
+    var tabBarController: MainTabBarController
     
-    init(navControllerWithRoot: UINavigationController, tabBarController: MainTabBarController){
-        self.navController = navControllerWithRoot
+    init(navController: UINavigationController, tabBarController: MainTabBarController){
+        self.navController = navController
         self.tabBarController = tabBarController
-        
-        setupNavigationController()
     }
     
     private func setupNavigationController() {
         navController.navigationBar.prefersLargeTitles = false
-        navController.navigationBar.isHidden = true
+        navController.navigationBar.isHidden = false
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
     }
     
+    func setupTabBarController() {
+        setupNavigationController()
+        tabBarController.coordinator = self
+        tabBarController.setupTapBar()
+    }
+    
     func photoTaped(photoInfo: PhotoStruct) {
+        print("Photo Taped Main coordinator")
         let detailsVC = DetailsViewController()
         let detailsViewModel = DetailsViewModel(with: photoInfo)
         detailsVC.viewModel = detailsViewModel

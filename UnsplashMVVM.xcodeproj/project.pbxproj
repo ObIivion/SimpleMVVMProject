@@ -147,7 +147,7 @@
 		A30F0AC128DCE47E00A3E456 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				A3D41FC428E452480076FF59 /*  Protocols */,
+				A3D41FC428E452480076FF59 /* Protocols */,
 				A30F0AC228DCE4C900A3E456 /* MainCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -199,11 +199,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A3D41FC428E452480076FF59 /*  Protocols */ = {
+		A3D41FC428E452480076FF59 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = " Protocols";
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		A3D41FCB28E477DC0076FF59 /* ViewModel */ = {

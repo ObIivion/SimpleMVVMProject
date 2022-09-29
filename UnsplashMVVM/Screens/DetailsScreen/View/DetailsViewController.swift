@@ -13,13 +13,16 @@ class DetailsViewController: BaseViewController<DetailsView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        print("check view model")
+        print(viewModel.observablePhoto.value.user.location)
+        bindViewModel()
     }
     
-    func bindViewModel(){
-        viewModel.observablePhoto.bind(observer: { photo in
-            self.mainView.setModel(photo)
+    func bindViewModel() {
+        self.viewModel.observablePhoto.bind(listener: { photo in
+            print("details view model")
+            self.mainView.setModel(photo: photo)
         })
     }
 }

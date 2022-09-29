@@ -10,8 +10,9 @@ class Observable<T> {
     typealias Listener = (T) -> Void
     private var listener: Listener?
     
-    func bind(observer: Listener?) {
-        self.listener = observer
+    func bind(listener: Listener?) {
+        print("bind listener")
+        self.listener = listener
     }
     
     var value: T {
@@ -23,5 +24,4 @@ class Observable<T> {
     init(value: T) {
         self.value = value
     }
-    
 }

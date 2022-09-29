@@ -52,14 +52,22 @@ class DetailsView: BaseView {
     }()
 
     override func initSetup() {
+        backgroundColor = .white
         addSubview(titleLabel)
+        addSubview(photoView)
+        addSubview(authorName)
+        addSubview(createdAtLabel)
+        addSubview(locationLabel)
+        addSubview(numberOfDowloads)
         setupConstraints()
     }
     
-    func setModel(photo) {
-        
-        
-        
+    func setModel(photo: PhotoStruct) {
+        print("setModel func")
+        photoView.kf.setImage(with: URL(string: photo.urls.full))
+        authorName.text = photo.user.name
+        createdAtLabel.text = photo.createdAt
+        locationLabel.text = photo.user.location
     }
     
     private func setupConstraints(){

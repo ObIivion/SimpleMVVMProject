@@ -15,7 +15,6 @@ class MoyaApiProvider {
     
     func moyaGetPhotos(competion: @escaping (Result<[PhotoStruct],Error>) -> Void) {
         
-        print("упали в provider get photos")
         getData(target: .getPhotos, completion: competion)
     }
 }
@@ -28,18 +27,15 @@ extension MoyaApiProvider {
             switch result {
             case let .success(response):
                 do {
-                    print("----- SUCCESS REQUEST -----")
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let decoded = try decoder.decode([PhotoStruct].self, from: response.data)
                     completion(.success(decoded))
                 } catch {
-                    print("ERROR CATCHED while decode json")
                     print(error.localizedDescription)
                     completion(.failure(error))
                 }
             case let .failure(error):
-                print("Case let failure")
                 print(error.localizedDescription)
             }
         }

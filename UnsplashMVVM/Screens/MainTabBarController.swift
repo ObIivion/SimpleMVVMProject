@@ -8,29 +8,30 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+    
+    var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTapBar()
         setupTapBarAppearence()
     }
     
-    private func setupTapBar() {
+    func setupTapBar() {
         
-        viewControllers = [setupVC(viewController: PhotosViewController(),
-                                   title: "Photos",
-                                   image: UIImage(systemName: "house")),
-                           setupVC(viewController: FavouritesViewController(),
-                                   title: "Favourites",
-                                   image: UIImage(systemName: "bookmark.circle.fill"))]
+        let photosVC = PhotosViewController()
+        photosVC.coordinator = coordinator
+        let favouritesVC = FavouritesViewController()
+        favouritesVC.coordinator = coordinator
+        
+        viewControllers = [ setupVC(viewController: photosVC, title: "Photos", image: UIImage(systemName: "house")),
+                            setupVC(viewController: favouritesVC, title: "Favourites", image: UIImage(systemName: "bookmark.circle.fill")) ]
     }
     
     private func setupVC(viewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
         
         viewController.tabBarItem.title = title
         viewController.tabBarItem.image = image
-        
         return viewController
     }
     
@@ -60,7 +61,7 @@ class MainTabBarController: UITabBarController {
 
 extension MainTabBarController: UITabBarControllerDelegate {
     
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        <#code#>
-    }
+//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//        
+//    }
 }

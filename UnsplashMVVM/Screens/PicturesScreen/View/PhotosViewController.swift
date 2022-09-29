@@ -10,9 +10,8 @@ import Kingfisher
 
 class PhotosViewController: BaseViewController<PhotosView> {
     
-    private lazy var viewModel = PhotosViewModel()
-    
-    private let apiProvider = MoyaApiProvider()
+    private var viewModel = PhotosViewModel()
+    var coordinator: MainCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +48,10 @@ extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSo
                                                       for: indexPath) as! PhotosCollectionViewCell
         cell.setImage(url: viewModel.photos[indexPath.row].urls.regular)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coordinator?.photoTaped(photoInfo: viewModel.photos[indexPath.row])
     }
 }
 
