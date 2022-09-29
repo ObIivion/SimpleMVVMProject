@@ -53,6 +53,7 @@ class DetailsView: BaseView {
 
     override func initSetup() {
         backgroundColor = .white
+        
         addSubview(titleLabel)
         addSubview(photoView)
         addSubview(authorName)
@@ -81,7 +82,9 @@ class DetailsView: BaseView {
         photoView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             photoView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
-            photoView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            photoView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            photoView.widthAnchor.constraint(equalTo: widthAnchor, constant: 0.8),
+            photoView.heightAnchor.constraint(equalTo: widthAnchor, constant: 0.8)
         ])
         
         authorName.translatesAutoresizingMaskIntoConstraints = false

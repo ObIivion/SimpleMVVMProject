@@ -17,6 +17,7 @@ class Observable<T> {
     
     var value: T {
         didSet {
+            print("did set")
             listener?(value)
         }
     }

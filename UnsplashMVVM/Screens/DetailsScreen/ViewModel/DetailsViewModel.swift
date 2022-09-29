@@ -9,10 +9,13 @@ import Foundation
 
 class DetailsViewModel {
     
-    var observablePhoto = Observable(value: PhotoStruct.init(id: "", createdAt: "", describtion: "", user: TheUser.init(username: "", name: "", location: ""), urls: URLs.init(full: "", regular: "", small: "")))
+    var observablePhoto: Observable<PhotoStruct>
     
     init(with photoInfo: PhotoStruct) {
-        observablePhoto.value = photoInfo
-        print(observablePhoto.value.createdAt)
+        self.observablePhoto = Observable(value: photoInfo)
+    }
+    
+    func setModel(photoInfo: PhotoStruct){
+        self.observablePhoto.value = photoInfo
     }
 }
